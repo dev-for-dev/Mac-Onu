@@ -48,6 +48,7 @@ public class DisplayCad  extends Resolution{
 			maskMac = new MaskFormatter("AA:AA:AA:AA:AA:AA");
 			mac = new JFormattedTextField(maskMac);
 			mac.setBounds(15, 20, 240, 30);
+			mac.setValue(null);
 			add(mac);
 			macs = new JTextPane();
 			macs.setBounds(15, 60, 240, 300);
