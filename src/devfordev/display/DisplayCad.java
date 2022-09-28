@@ -14,20 +14,21 @@ import devfordev.data.MaskTextMAC;
 import devfordev.data.MeuJButton;
 
 @SuppressWarnings("serial")
-public class DisplayCad  extends Resolution{
-	private MyJLabel fundo;
-	private MaskTextMAC txtLogin;
+public class DisplayCad extends Resolution {
+
 	private MeuJButton adicionar, copiar;
 	private JTextPane macs;
-	private String macText = "",macTemp;
+	private String macText = "", macTemp;
 	private JFormattedTextField mac;
 	private Ouvinte o = new Ouvinte();
+
 	public DisplayCad() {
 //		this.adicionarLb();
 		this.adicionarTf();
 		this.adicionarBt();
 		this.repaint();
 	}
+
 	public void adicionarBt() {
 		// MeuJButton("NOME DO BOTAO",x, y, width, height,"ICONE USADO NO
 		// BOTAO");
@@ -54,29 +55,30 @@ public class DisplayCad  extends Resolution{
 			macs.setBounds(15, 60, 240, 300);
 			macs.setEditable(false);
 			add(macs);
-			
+
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
+
 	}
-	private class Ouvinte implements ActionListener{
+
+	private class Ouvinte implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			if (e.getSource() == adicionar) {
 				macText = mac.getText().toUpperCase();
-				if (macText.replace(" ","").length()<17) {
-					JOptionPane.showMessageDialog(null, "Mac Incompleto!");
-				}else {
+				if (macText.replace(" ", "").length() < 17) {
+					JOptionPane.showMessageDialog(macs, "Mac Incompleto!");
+				} else {
 					macText = mac.getText().toUpperCase();
-					macTemp = macs.getText() + macText+"\n";
+					macTemp = macs.getText() + macText + "\n";
 					macs.setText(macTemp);
 					mac.setValue(null);
 				}
-				
+
 			}
 			if (e.getSource() == copiar) {
 				macs.selectAll();
@@ -84,7 +86,7 @@ public class DisplayCad  extends Resolution{
 				macs.setText(null);
 			}
 		}
-		
+
 	}
 
 }
