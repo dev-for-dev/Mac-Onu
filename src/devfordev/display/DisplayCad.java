@@ -4,7 +4,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.ParseException;
 
+import javax.swing.JDialog;
 import javax.swing.JFormattedTextField;
+import javax.swing.JOptionPane;
 import javax.swing.JTextPane;
 import javax.swing.text.MaskFormatter;
 
@@ -65,13 +67,20 @@ public class DisplayCad  extends Resolution{
 			// TODO Auto-generated method stub
 			if (e.getSource() == adicionar) {
 				macText = mac.getText().toUpperCase();
-				macTemp = macs.getText() + macText+"\n";
-				macs.setText(macTemp);
-				System.out.println(macTemp);
-				mac.setValue(null);
+				if (macText.replace(" ","").length()<17) {
+					JOptionPane.showMessageDialog(null, "Mac Incompleto!");
+				}else {
+					macText = mac.getText().toUpperCase();
+					macTemp = macs.getText() + macText+"\n";
+					macs.setText(macTemp);
+					mac.setValue(null);
+				}
+				
 			}
 			if (e.getSource() == copiar) {
-				
+				macs.selectAll();
+				macs.copy();
+				macs.setText(null);
 			}
 		}
 		
